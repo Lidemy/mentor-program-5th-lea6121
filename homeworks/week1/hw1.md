@@ -8,3 +8,9 @@
 6. 完成作業後，在 terminal 輸入 `git commit -am "finished hw1"`
 7. terminal 輸入 `git push --set-upstream origin feature/week-1`
 8. 到 GitHub 上點選 open pull request，接著 create pull request，就發 PR 了
+
+## 作業被改完且 merge 後：
+
+1. 終端機上輸入 `git checkout master` 把分支切換到 master
+2. 輸入 `git pull origin master` 把最新的改動 pull 下來
+3. 最後在終端機上輸入 `git branch -d feature/week-1` 刪除已經 merge 的分支
