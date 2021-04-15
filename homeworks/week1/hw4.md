@@ -7,11 +7,12 @@ Git 也能幫助工程師比對每個版本程式碼的差異，如果新 commit
 
 所以，菜哥要管理他的笑話大全資料夾且成為笑話冠軍，就照以下步驟服用ㄅ：
 
-1. 首先先打開你 Mac 的終端機，輸入 `git --version` 安裝 git
-2. 安裝好 git 後，在終端機 cd 到菜哥的笑話資料夾位置，輸入 `git init` 。現在笑話資料夾受到 git 的管控了
-3. 接著輸入指令 `git add .` 。這個步驟是把笑話資料夾裡的所有檔案加到「索引」裡，加到索引後才能進行下一個指令
-4. 輸入指令 `git commit -m "輸入你的 commit 訊息，例如 add a new index.html"`，就成功把目前的索引狀態儲存到本地數據庫。
-5. 如果菜哥想要把 local repo 放到雲端上面，可以使用雲端版本控制服務，這邊是使用 GitHub。 GitHub 註冊後，在網頁上點選 `new` 按鈕來 create a new repository
-6. 在雲端 create 好 repo 後，複製雲端 repo 的位址(這邊用 https)，接著在 terminal 上輸入：
+1. 首先先打開你 Mac 的終端機，輸入 `brew install git` 安裝 git (此方式需先安裝 Homebrew，[Homebrew 安裝連結](https://brew.sh/index_zh-tw))
+2. 完成後，可以輸入 `git --version` 確認是否有成功安裝 git 和 git 的版本資訊
+3. 接著在終端機 cd 到菜哥的笑話資料夾位置，輸入 `git init` 。現在笑話資料夾受到 git 的管控了
+4. 接著輸入指令 `git add .` 。這個步驟是把笑話資料夾裡的所有檔案加到「索引」裡，加到索引後才能進行下一個指令
+5. 輸入指令 `git commit -m "輸入你的 commit 訊息，例如 add a new index.html"`，就成功把目前的索引狀態儲存到本地數據庫。
+6. 如果菜哥想要把 local repo 放到雲端上面，可以使用雲端版本控制服務，這邊是使用 GitHub。 GitHub 註冊後，在網頁上點選 `new` 按鈕來 create a new repository
+7. 在雲端 create 好 repo 後，複製雲端 repo 的位址(這邊用 https)，接著在 terminal 上輸入：
    `git remote add origin [your github repo https]`
-7. 接著下指令 `git push`，就將本地端的 repo 推到遠端了
+8. 接著下指令 `git push --set-upstream [repo 簡稱][branch 名稱]`，就將本地端的 repo 推到遠端了
