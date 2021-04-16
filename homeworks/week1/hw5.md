@@ -16,7 +16,7 @@
 客戶端：耶～我來把使用者的 request 傳給你!
 ```
 
-###### 經過助教指正後，這邊 client 實際上是不會問 server 在不在的。如果客戶端收到使用者的 request 後會直接丟給 server。假設現在是 server 找不到請求資源的情況，就會顯示 404 status code。Status code 是伺服器端回應(HTTP Response)的狀態，有很多不同的狀態碼。
+###### 假設 server 找不到請求資源的情況，就會顯示 404 status code。Status code 是伺服器端回應(HTTP Response)的狀態，有很多不同的狀態碼。
 
 - 伺服器端收到請求後，~~請資料庫去找 Javascript 的相關資料~~ 會到資料庫去找 Javascript 的相關資料
 - ~~資料庫取得 JavaScript 的相關資料結果後，把資料回傳給伺服器端~~ 找到 JavaScript 的相關資料結果後，伺服器端會回傳 response 給客戶端，我們的瀏覽器會接收到 response
