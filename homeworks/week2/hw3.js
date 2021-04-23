@@ -1,9 +1,6 @@
 function reverse(str) {
-  var n = str.length;
-  n = n - 1;
   var newStr = "";
-  for (var i = n; i >= 0; i--) {
-    // console.log(str.charAt(i));
+  for (var i = str.length - 1; i >= 0; i--) {
     newStr += str.charAt(i);
   }
   console.log(newStr);

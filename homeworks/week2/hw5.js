@@ -1,18 +1,20 @@
 function join(arr, concatStr) {
-  let str = arr.toString();
-  // console.log(str);
-  let newStr = str.replace(/,/g, concatStr);
-  // console.log(newStr);
+  if (arr.length === 0) {
+    return "";
+  }
+
+  let newStr = arr[0];
+  for (let i = 1; i < arr.length; i += 1) {
+    newStr += concatStr + arr[i];
+  }
   return newStr;
 }
 
 function repeat(str, times) {
   let repeatStr = "";
   for (let i = 1; i <= times; i++) {
-    // console.log(str);
     repeatStr += str;
   }
-  // console.log(repeatStr);
   return repeatStr;
 }
 
