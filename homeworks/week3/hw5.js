@@ -10,10 +10,10 @@ rl.on('line', (line) => {
 })
 
 function solve(input) {
-  const arrLength = Number(input[0])
-  for (let i = 1; i <= arrLength; i++) {
+  const temp = Number(input[0])
+  for (let i = 1; i <= temp; i++) {
     const [a, b, k] = input[i].split(' ')
-    if (k === 1) {
+    if (Number(k) === 1) {
       if (BigInt(a) > BigInt(b)) {
         console.log('A')
       } else if (BigInt(a) === BigInt(b)) {
