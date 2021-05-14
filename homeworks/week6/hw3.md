@@ -38,7 +38,7 @@ Box model 盒模型也稱為區塊模型，係由 margin, border, padding, conte
   這個屬性值大多使用在：
   1. 設定絕對配置(position: absolute)的基準元素時
   2. 希望元素調整位置，或指定圖層的上下順序時
-- `position: absolute 絕對定位`：想脫離原本預設的版面配置並自由指定配置位置的話，可設定 position: absolute。absolute 係以設定父層元素為基準元素作絕對位移，如果套用 position: absolute 的元素的上層容器沒有「可以被定位」的元素（除了 position: static 以外，其他元素都屬可被定位元素），那設定為 position: absolute 的元素會以 body 元素（整個視窗）為基準。absolute 和 relative 都可達到調整位置的效果，但區塊設定 absolute 後，原本佔的空間會不見，後續的內容會自動遞補上來（像筆記本上黏貼便利貼，後面寫的內容就會寫在原本它會佔的位置）。
+- `position: absolute 絕對定位`：想脫離原本預設的版面配置並自由指定配置位置的話，可設定 position: absolute。absolute 係以往上找第一個非 static 的元素作絕對位移，如果套用 position: absolute 的元素的上層容器沒有「可以被定位」的元素（除了 position: static 以外，其他元素都屬可被定位元素），那設定為 position: absolute 的元素會以 body 元素（整個視窗）為基準。absolute 和 relative 都可達到調整位置的效果，但區塊設定 absolute 後，原本佔的空間會不見，後續的內容會自動遞補上來（像筆記本上黏貼便利貼，後面寫的內容就會寫在原本它會佔的位置）。
 - `position: fixed 固定定位`：以瀏覽器視窗來定位，元素不會隨著頁面滾動消失，而會固定在視窗上相同的位置。可使用 top、right、bottom 和 left 屬性來定位，常應用在網頁的 <回到上方> 按鈕等。
 
 **left、top、right、bottom 語法和 z-index 語法只有當 position 屬性非 static 時才有效**
