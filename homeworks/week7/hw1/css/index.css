@@ -1,9 +1,11 @@
 body {
   font-family: MicrosoftJhengHei;
   background: rgb(223, 223, 223);
+  height: 100vh;
 }
 
 .wrapper {
+  min-height: 100vh;
   background: white;
   width: 980px;
   margin: 30px auto;
@@ -92,6 +94,7 @@ footer {
   margin-top: 50px;
   padding-top: 10px;
   padding-bottom: 10px;
+  border-top: 5px solid #fad312;
 }
 
 .rights {
