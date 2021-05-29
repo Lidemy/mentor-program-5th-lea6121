@@ -9,8 +9,8 @@ function test(e) {
   const inputEmailReminder = document.querySelector('input[name=email] ~ h4')
   const inputMobile = document.querySelector('input[name=number]')
   const inputMobileReminder = document.querySelector('input[name=number] ~ h4')
-  const inputTypeBed = document.getElementById('bed').checked
-  const inputTypeFloor = document.getElementById('floor').checked
+  const inputTypeBed = document.getElementById('bed')
+  const inputTypeFloor = document.getElementById('floor')
   const inputTypeReminder = document.querySelector('input[name=type] ~ h4')
   const inputText = document.querySelector('input[name=text]')
   const inputTextReminder = document.querySelector('input[name=text] ~ h4')
@@ -32,7 +32,7 @@ function test(e) {
     e.preventDefault()
   }
 
-  if (inputTypeBed === false && inputTypeFloor === false) {
+  if (!inputTypeBed.checked && !inputTypeFloor.checked) {
     inputTypeReminder.style.display = 'block'
     e.preventDefault()
   }
@@ -46,9 +46,25 @@ function test(e) {
     inputName.value !== '' &&
     isEmail.test(inputEmail.value) &&
     isMobile.test(inputMobile.value) &&
-    (inputTypeBed !== false || inputTypeFloor !== false) &&
+    (inputTypeBed.checked !== false || inputTypeFloor.checked !== false) &&
     inputText.value !== ''
   ) {
-    alert('報名成功！')
+    let inputTypeValue = ''
+    if (inputTypeBed.checked === true) {
+      inputTypeValue = inputTypeBed.value
+    } else {
+      inputTypeValue = inputTypeFloor.value
+    }
+
+    const result = `
+    報名成功！提交結果：
+    暱稱：${inputName.value}
+    電子郵件：${inputEmail.value}
+    手機號碼：${inputMobile.value}
+    報名類型：${inputTypeValue}
+    如何知道活動：${inputText.value}
+    其他：${document.querySelector('input[name=comment]').value}`
+
+    alert(result)
   }
 }
