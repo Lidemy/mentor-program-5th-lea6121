@@ -58,12 +58,12 @@ function test(e) {
 
     const result = `
     報名成功！提交結果：
-    暱稱：${inputName.value}
-    電子郵件：${inputEmail.value}
-    手機號碼：${inputMobile.value}
-    報名類型：${inputTypeValue}
-    如何知道活動：${inputText.value}
-    其他：${document.querySelector('input[name=comment]').value}`
+    - 暱稱：${inputName.value}
+    - 電子郵件：${inputEmail.value}
+    - 手機號碼：${inputMobile.value}
+    - 報名類型：${inputTypeValue}
+    - 如何知道活動：${inputText.value}
+    - 其他：${document.querySelector('input[name=comment]').value}`
 
     alert(result)
   }
