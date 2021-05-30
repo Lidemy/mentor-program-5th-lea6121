@@ -98,8 +98,3 @@ window.onscroll = () => {
     getStream()
   }
 }
-
-const myNavTag = document.querySelector('.tags')
-myNavTag.addEventListener('click', (e) => {
-  console.log(e)
-})
