@@ -218,6 +218,10 @@ h2 {
     text-align: center;
   }
 
+  .banner2 h1 {
+    margin: 0 20px 10px 20px;
+  }
+
   .campaign h3 {
     margin-bottom: 20px;
   }
