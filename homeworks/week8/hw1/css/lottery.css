@@ -1,0 +1,256 @@
+* {
+  font-family: Questrial, MicrosoftJhengHei;
+}
+
+/* nav-bar */
+
+section {
+  width: 100vw;
+  height: 84px;
+  padding: 0 50px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: white;
+  justify-content: space-between;
+  z-index: 2;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+#site-name {
+  font-size: 36px;
+  font-weight: normal;
+  color: #489846;
+}
+
+.tags {
+  display: flex;
+}
+
+.tag {
+  margin: 3px;
+  padding: 15px;
+  font-size: 18px;
+  line-height: normal;
+  text-align: center;
+  color: #010101;
+  display: flex;
+  transition: all 0.1s ease-in;
+}
+
+.tag:hover {
+  background: #ff7286;
+  color: white;
+  border-radius: 8px;
+}
+
+.banner1 {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../img/lottery.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner1 > div {
+  position: relative;
+  height: 520px;
+  margin: 0 auto;
+  padding: 18px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 500px;
+  top: 16vh;
+  font-size: 16px;
+  line-height: 2rem;
+  color: #322929;
+}
+
+.banner1 h1 {
+  color: #5ec1b6;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.campaign__period,
+.campaign__description,
+.campaign__prizes {
+  display: flex;
+  border-bottom: 1px solid #cdcdcd;
+  padding: 10px 5px;
+}
+
+.campaign h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.campaign p {
+  word-wrap: break-word;
+  width: 78%;
+}
+
+.banner2 {
+  position: relative;
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+.banner2::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  background: rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  width: 100vw;
+}
+
+.banner2 > div {
+  top: 45vh;
+  position: relative;
+}
+
+.banner2 h1 {
+  position: relative;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  color: black;
+  margin: 0 150px 30px 150px;
+  z-index: 1;
+}
+
+.button__lottery {
+  position: relative;
+  margin: 20px auto;
+  background: #e62a45;
+  width: 300px;
+  height: 55px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.button__lottery:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  width: 100vw;
+  background: #e8efee;
+  font-size: 14px;
+  line-height: 30px;
+  color: #484848;
+}
+
+.footer__left {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 25px;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #489846;
+}
+
+.footer__rights {
+  background: #35564b;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* media queries */
+@media only screen and (max-width: 720px) {
+  section {
+    height: 60px;
+    justify-content: center;
+  }
+
+  .tags {
+    position: fixed;
+    width: 100vw;
+    top: 59px;
+    background: #aee9ad;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tag {
+    font-size: 20px;
+    padding-top: 14px;
+  }
+
+  .tag:hover {
+    color: white;
+    background-color: #aee9ad;
+    border-radius: 0%;
+    padding: 0px 11px;
+  }
+
+  .banner1 {
+    height: 1000px;
+  }
+
+  .banner1 > div {
+    top: 19vh;
+    display: block;
+    width: 90%;
+    height: 78%;
+    text-align: center;
+  }
+
+  .campaign h3 {
+    margin-bottom: 20px;
+  }
+
+  .campaign p {
+    width: 100%;
+  }
+
+  .campaign__period,
+  .campaign__description,
+  .campaign__prizes {
+    display: block;
+    padding: 10px 0;
+  }
+
+  .banner2 h1 {
+    font-size: 25px;
+    margin: 0 20px 10px 20px;
+  }
+
+  .button__lottery {
+    width: 240px;
+    margin-top: 10px;
+  }
+
+  .footer__left {
+    flex-direction: column-reverse;
+    padding: 20px;
+    font-size: 16px;
+    line-height: 2.5em;
+  }
+
+  .footer__right {
+    text-align: left;
+  }
+}
