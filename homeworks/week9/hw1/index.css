@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  font-family: Baskerville, Cambria, Cochin, Georgia, Times, 'Times New Roman';
+}
+
+body {
+  margin: 0;
+  background: #f7f7f7;
+}
+
+header {
+  background: #ffc4c6;
+  color: #a20606;
+  padding: 10px;
+  text-align: center;
+}
+
+main {
+  background: white;
+  max-width: 800px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px 25px;
+  box-shadow: 5px 5px 5px #e8e8e8;
+  border-radius: 5px;
+}
+
+main > a {
+  text-align: center;
+  min-width: 20px;
+  padding: 10px 30px;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  background: white;
+  text-decoration: none;
+  display: inline-block;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 16px;
+  color: rgb(197, 7, 7);
+}
+
+form > div {
+  margin-bottom: 10px;
+}
+
+form > textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c2dffb;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  width: 100px;
+  color: #583c63;
+  font-size: 16px;
+  background: white;
+}
+
+.submit-btn:hover {
+  color: black;
+  cursor: pointer;
+  background: white;
+}
+
+hr {
+  background-color: #e8e8e8;
+  height: 2px;
+  border: none;
+  margin: 20px auto;
+}
+
+.card {
+  margin: 20px 0;
+  min-height: 70px;
+  display: flex;
+}
+
+.card__avatar {
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e4f0fb;
+}
+
+.card__body {
+  margin-left: 10px;
+}
+
+.card__content {
+  margin-top: 8px;
+  max-width: 100%;
+  white-space: pre-line;
+  word-break: break-all;
+}
+
+.card__arthur {
+  color: #5c9edc;
+  font-weight: bold;
+}
+
+.card__post-time {
+  color: #a0a0a0;
+  font-size: 12px;
+}
