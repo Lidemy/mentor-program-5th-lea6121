@@ -3,12 +3,19 @@
 
   function getUserFromUsername($username){
     global $conn;
-    $sql = sprintf(
-      "SELECT * FROM `lea6121_w9_hw1_users` WHERE username = '%s'",
-      $username
-    );
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM `lea6121_w9_hw1_users` WHERE username = ?";
+    
+    $stmt = $conn->prepare($sql);
+    
+    $stmt->bind_param('s', $username); 
+
+    $result = $stmt->execute();
+    
+    $result = $stmt->get_result();
+
     $row = $result->fetch_assoc();
+
+    
     return $row;
   } 
 
