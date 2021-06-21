@@ -14,13 +14,16 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = sprintf(
-    "SELECT * FROM `lea6121_w11_hw2_users` WHERE username = '%s' and password = '%s'",
-    $username,
-    $password
-  );
+  $sql = "SELECT * FROM `lea6121_w11_hw2_users` WHERE username = ? and password = ?";
 
-  $result = $conn->query($sql);
+  $stmt = $conn->prepare($sql);
+    
+  $stmt->bind_param('ss', $username, $password); 
+
+  $result = $stmt->execute();
+    
+  $result = $stmt->get_result();
+
   if(!$result){
     die($conn->error);
   }
