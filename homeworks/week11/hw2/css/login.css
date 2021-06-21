@@ -1,0 +1,89 @@
+body {
+  font-family: Baskerville, Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+section {
+  width: 100vw;
+  padding: 0 180px 0 100px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  justify-content: space-evenly;
+  z-index: 2;
+  border-bottom: 1px solid black;
+  margin-bottom: 60px;
+}
+
+#site-name {
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+.tags {
+  display: flex;
+}
+
+.tag {
+  box-sizing: border-box;
+  padding: 35px 40px 35px 40px;
+  font-size: 13px;
+  text-align: center;
+  color: #010101;
+  display: flex;
+  transition: all 0.2s ease-in;
+}
+
+.tags a:first-child {
+  border-left: 1px solid black;
+}
+
+.tag + .tag {
+  border-left: 1px solid black;
+}
+
+.tag:hover {
+  background: black;
+  color: white;
+}
+
+main {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 73px 50px 73px 50px;
+  border: solid 1px #000000;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+form div {
+  font-size: 18px;
+  padding: 10px 0px;
+}
+
+input {
+  margin: 10px 0 10px 0;
+  width: 100%;
+  height: 30px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.submit {
+  border: none;
+  height: 60px;
+  background-image: linear-gradient(to top, #000000, #434343);
+  color: white;
+  font-size: 20px;
+  font-family: Baskerville, Georgia, 'Times New Roman', Times, serif;
+  cursor: pointer;
+}
