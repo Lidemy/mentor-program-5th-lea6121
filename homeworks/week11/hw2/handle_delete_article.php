@@ -12,7 +12,7 @@
 
   $id = $_GET['id'];
 
-  $sql = "UPDATE articles set is_deleted=1 WHERE id=?";
+  $sql = "UPDATE `lea6121_w11_hw2_articles` SET is_deleted=1 WHERE id=?";
 
   $stmt = $conn->prepare($sql);
 
