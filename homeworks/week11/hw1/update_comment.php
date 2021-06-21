@@ -55,9 +55,9 @@
     ?>
 
     <form method="POST" action="./handle_update_comment.php">
-      <textarea name=content rows="5" placeholder="想說些什麼呢？"><?php echo $row['content']?>
+      <textarea name=content rows="5" placeholder="想說些什麼呢？"><?php echo escape($row['content'])?>
       </textarea>
-      <input type="hidden" name="id" value="<?php echo $row['id'] ?>" />
+      <input type="hidden" name="id" value="<?php echo escape($row['id']) ?>" />
       <input class="submit-btn" type="submit" />
     </form>
     <hr />

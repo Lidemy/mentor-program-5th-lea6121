@@ -65,7 +65,7 @@
                   <option value="Suspend">Suspend</option>                  
                 </select>
                 <input class="submit-btn" type="submit" />
-                <input type="hidden" name="id" value="<?php echo $row['id'] ?>" />
+                <input type="hidden" name="id" value="<?php echo escape($row['id']) ?>" />
               </form>    
             </td>  
           </tr>

@@ -69,7 +69,7 @@
         </div>
         <input class="submit-btn" type="submit" />
       </form>
-      <h3>您好！<?php echo $user['nickname']; ?></h3>
+      <h3>您好！<?php echo escape($user['nickname']); ?></h3>
     <?php } ?>
     
     <h1>Comments</h1>
@@ -110,8 +110,8 @@
               </span>
               <span class="card__post-time"><?php echo escape($row['created_at']) ?></span>
               <?php if (isUser($user, $row)){ ?>
-                <a href="./update_comment.php?id=<?php echo $row['id'] ?>">編輯</a>
-                <a href="./handle_delete_comment.php?id=<?php echo $row['id'] ?>">刪除</a>
+                <a href="./update_comment.php?id=<?php echo escape($row['id']) ?>">編輯</a>
+                <a href="./handle_delete_comment.php?id=<?php echo escape($row['id']) ?>">刪除</a>
               <?php } ?>         
             </div>
             <p class="card__content"><?php echo escape($row['content']) ?></p>
