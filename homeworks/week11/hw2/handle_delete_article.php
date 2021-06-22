@@ -14,15 +14,15 @@
       die('資料輸入不齊全');
     }
   
-    $username = $_SESSION['username'];
+  $username = $_SESSION['username'];
 
   $id = $_GET['id'];
 
-  $sql = "UPDATE `lea6121_w11_hw2_articles` SET is_deleted=1 WHERE id=?";
+  $sql = "UPDATE `lea6121_w11_hw2_articles` SET is_deleted=1 WHERE id=? AND username=?";
 
   $stmt = $conn->prepare($sql);
 
-  $stmt->bind_param('i', $id); 
+  $stmt->bind_param('is', $id, $username); 
   
   $result = $stmt->execute();
   if(!$result){

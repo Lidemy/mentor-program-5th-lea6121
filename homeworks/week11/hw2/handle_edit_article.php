@@ -29,7 +29,7 @@
 
   $stmt = $conn->prepare($sql);
 
-  $stmt->bind_param('sssi', $title, $img_url, $content, $id); 
+  $stmt->bind_param('sssis', $title, $img_url, $content, $id, $username); 
 
   $result = $stmt->execute();
   if(!$result){
