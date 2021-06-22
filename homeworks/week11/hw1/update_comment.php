@@ -12,6 +12,10 @@
     $user = getUserFromUsername($username);
   }
 
+  if ($username === NULL){
+    header('Location:./index.php');
+  }
+  
   $stmt = $conn->prepare(
     "SELECT * FROM `lea6121_w9_hw1_comments` WHERE id = ?");
     

@@ -21,7 +21,7 @@
   $img_url= $_POST['img_url'];
   $content = $_POST['editor'];
 
-  $sql = "UPDATE `lea6121_w11_hw2_articles` SET title=?, img_url=?, content=? WHERE id=?";
+  $sql = "UPDATE `lea6121_w11_hw2_articles` SET title=?, img_url=?, content=? WHERE id=? AND username=?";
 
   $stmt = $conn->prepare($sql);
 

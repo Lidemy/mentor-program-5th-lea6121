@@ -4,10 +4,15 @@
   require_once("utils.php");
 
   $username = NULL;
+
   if(!empty($_SESSION['username'])){
     $username = $_SESSION['username'];
   }
 
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+  
 ?>
 
 <!DOCTYPE html>

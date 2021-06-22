@@ -14,7 +14,7 @@
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = "SELECT * FROM `lea6121_w11_hw2_users` WHERE username = ? and password = ?";
+  $sql = "SELECT * FROM `lea6121_w11_hw2_users` WHERE username = ? AND password = ?";
 
   $stmt = $conn->prepare($sql);
     

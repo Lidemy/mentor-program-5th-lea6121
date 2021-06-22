@@ -4,11 +4,17 @@
   require_once("utils.php");
 
   $username = NULL;
+  $user = NULL;
   $id = $_GET['id'];
 
 
   if(!empty($_SESSION['username'])){
     $username = $_SESSION['username'];
+    $user = getUserFromUsername($username);
+  }
+
+  if ($username === NULL || !isAdmin($user)){
+    header('Location:./index.php');
   }
 
   $stmt = $conn->prepare(

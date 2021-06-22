@@ -4,16 +4,18 @@
   require_once("utils.php");
 
   $username = NULL;
+
   if(!empty($_SESSION['username'])){
     $username = $_SESSION['username'];
   }
 
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
 
-  $item_per_page = 10;
   $stmt = $conn->prepare(
-    "SELECT * FROM `lea6121_w11_hw2_articles` WHERE is_deleted IS NULL ORDER BY created_at DESC LIMIT ?");
+    "SELECT * FROM `lea6121_w11_hw2_articles` WHERE is_deleted IS NULL ORDER BY created_at DESC");
   
-  $stmt->bind_param('i', $item_per_page);
   $result = $stmt->execute();
   
   if(!$result){

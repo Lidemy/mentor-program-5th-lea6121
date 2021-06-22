@@ -5,13 +5,18 @@
 
   $username = NULL;
   $id = $_GET['id'];
+
   if(!empty($_SESSION['username'])){
     $username = $_SESSION['username'];
   }
 
-  $stmt = $conn->prepare("SELECT * FROM `lea6121_w11_hw2_articles` WHERE id=?");
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+  
+  $stmt = $conn->prepare("SELECT * FROM `lea6121_w11_hw2_articles` WHERE id=? and username=?");
 
-  $stmt->bind_param("i", $id);
+  $stmt->bind_param("is", $id, $username);
   
   $result = $stmt->execute();
 

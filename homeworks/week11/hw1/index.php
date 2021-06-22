@@ -58,7 +58,7 @@
       <a href="./logout.php">登出</a>
       <span class="update-nickname">編輯暱稱</span>
 
-      <?php if(isAdmin($user)){ ?>
+      <?php if($username && isAdmin($user)){ ?>
         <a href="./backstage.php">後台管理</a>
       <?php } ?>
 
@@ -84,7 +84,7 @@
       }
     ?>
 
-    <?php if(hasPermission($user)) { ?>
+    <?php if($username && hasPermission($user)) { ?>
       
       <form method="POST" action="./handle_add_comment.php">
         <textarea name=content rows="5" placeholder="想說些什麼呢？"></textarea>

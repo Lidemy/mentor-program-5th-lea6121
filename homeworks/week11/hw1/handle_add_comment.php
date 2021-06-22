@@ -11,6 +11,13 @@
   }
 
   $username = $_SESSION['username'];
+  $user = getUserFromUsername($username);
+
+  if (!hasPermission($user)){
+    header("Location: ./index.php");
+    exit;
+  }
+  
   $content = $_POST['content'];
 
   $sql = "INSERT INTO `lea6121_w9_hw1_comments`(username, content) VALUES(?, ?)";
