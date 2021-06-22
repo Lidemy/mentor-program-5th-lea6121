@@ -3,6 +3,10 @@
   require_once("conn.php");
   require_once("utils.php");
 
+  if (!isAdmin($user)){
+    header('Location: ./index.php');
+  }
+
   $id = $_POST['id'];
   $identity = $_POST['identity'];
 

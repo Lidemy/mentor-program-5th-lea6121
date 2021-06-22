@@ -2,13 +2,19 @@
   session_start();
   require_once("conn.php");
   require_once("utils.php");
+  
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
 
   if(
     empty($_GET['id'])
     ){
       header('Location: ./index.php?errCode=1');    
       die('資料輸入不齊全');
-  }
+    }
+  
+    $username = $_SESSION['username'];
 
   $id = $_GET['id'];
 

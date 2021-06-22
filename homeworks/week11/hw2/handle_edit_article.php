@@ -3,6 +3,10 @@
   require_once("conn.php");
   require_once("utils.php");
 
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+
   if(
     empty(($_POST['editor'])) || empty($_POST['title']))
     {

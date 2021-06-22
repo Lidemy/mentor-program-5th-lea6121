@@ -3,6 +3,10 @@
   require_once("conn.php");
   require_once("utils.php");
 
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+
   if(
     empty($_GET['id'])
     ){
@@ -10,6 +14,7 @@
       die('資料輸入不齊全');
   }
 
+  $username = $_SESSION['username'];
   $id = $_GET['id'];
   $username = $_POST['username'];
   $user = getUserFromUsername($username);

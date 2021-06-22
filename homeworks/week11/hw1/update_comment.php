@@ -13,7 +13,7 @@
   }
 
   if ($username === NULL){
-    header('Location:./index.php');
+    header('Location: ./index.php');
   }
   
   $stmt = $conn->prepare(

@@ -36,6 +36,7 @@
   }
 
   $result = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +70,9 @@
         </div>
         <input class="submit-btn" type="submit" />
       </form>
-      <h3>您好！<?php echo escape($user['nickname']); ?></h3>
+      <h3>您好！<?php 
+        echo escape($row['nickname']);
+      ?></h3>
     <?php } ?>
     
     <h1>Comments</h1>

@@ -3,6 +3,10 @@
   require_once("conn.php");
   require_once("utils.php");
 
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+
   if(
     empty($_POST['title']) || empty($_POST['editor'])
     ){
@@ -13,7 +17,6 @@
   if(empty($_POST['img_url'])){
     $_POST['img_url'] = 'https://images.unsplash.com/photo-1623183074739-1ba7a5ba0002?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE1Mnw2c01WalRMU2tlUXx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60';
   }
-
 
   $username = $_SESSION['username'];
   $title = $_POST['title'];

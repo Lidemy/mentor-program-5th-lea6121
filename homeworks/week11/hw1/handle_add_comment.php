@@ -3,6 +3,11 @@
   require_once("conn.php");
   require_once("utils.php");
 
+
+  if ($username === NULL){
+    header('Location: ./index.php');
+  }
+  
   if(
     empty($_POST['content'])
     ){
@@ -10,7 +15,7 @@
       die('資料輸入不齊全');
   }
 
-  $username = $_SESSION['username'];
+  
   $user = getUserFromUsername($username);
 
   if (!hasPermission($user)){
@@ -18,6 +23,8 @@
     exit;
   }
   
+  $username = $_SESSION['username'];
+
   $content = $_POST['content'];
 
   $sql = "INSERT INTO `lea6121_w9_hw1_comments`(username, content) VALUES(?, ?)";
