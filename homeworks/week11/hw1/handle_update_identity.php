@@ -5,6 +5,7 @@
 
   if (!isAdmin($user)){
     header('Location: ./index.php');
+    exit();
   }
 
   $id = $_POST['id'];

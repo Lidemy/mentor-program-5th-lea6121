@@ -63,10 +63,10 @@
           <img  src="<?php echo escape($row['img_url']) ?>">
         </a>
         </div>
-          <div class="post_author"><?php echo $row['username'] ?></div>
-          <div class="post_date"><?php echo $row['created_at'] ?></div>
-          <div class="post_title"><?php echo $row['title'] ?></div>
-          <div class="post_content"><?php echo $row['content'] ?></div>
+          <div class="post_author"><?php echo escape($row['username']) ?></div>
+          <div class="post_date"><?php echo escape($row['created_at']) ?></div>
+          <div class="post_title"><?php echo escape($row['title']) ?></div>
+          <div class="post_content"><?php echo ($row['content']) ?></div>
           <div class="post_select">
             <a href="./content.php?id=<?php echo escape($row['id']) ?>">Read More...</a>
             <?php if($username){ ?>

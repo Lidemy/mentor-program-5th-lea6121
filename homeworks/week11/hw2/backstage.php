@@ -11,6 +11,7 @@
 
   if ($username === NULL){
     header('Location: ./index.php');
+    exit();
   }
 
   $stmt = $conn->prepare(

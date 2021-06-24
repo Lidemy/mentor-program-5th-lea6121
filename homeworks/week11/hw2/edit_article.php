@@ -12,6 +12,7 @@
 
   if ($username === NULL){
     header('Location: ./index.php');
+    exit();
   }
   
   $stmt = $conn->prepare("SELECT * FROM `lea6121_w11_hw2_articles` WHERE id=? and username=?");

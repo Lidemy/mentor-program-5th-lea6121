@@ -5,6 +5,7 @@
 
   if ($username === NULL){
     header('Location: ./index.php');
+    exit();
   }
 
   if(
@@ -16,7 +17,6 @@
 
   $username = $_SESSION['username'];
   $id = $_GET['id'];
-  $username = $_POST['username'];
   $user = getUserFromUsername($username);
 
 

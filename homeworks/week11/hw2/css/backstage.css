@@ -104,6 +104,7 @@ body h1 {
   -webkit-line-clamp: 1;
   overflow: hidden;
   white-space: pre-line;
+  line-height: 2.5rem;
 }
 
 .post_content {

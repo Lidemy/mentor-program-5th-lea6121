@@ -13,8 +13,9 @@
     $user = getUserFromUsername($username);
   }
 
-  if ($username === NULL || !isAdmin($user)){
-    header('Location:./index.php');
+  if (!isAdmin($user)){
+    header('Location: ./index.php');
+    exit();
   }
 
   $stmt = $conn->prepare(

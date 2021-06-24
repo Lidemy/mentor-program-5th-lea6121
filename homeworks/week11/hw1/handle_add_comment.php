@@ -6,6 +6,7 @@
 
   if ($username === NULL){
     header('Location: ./index.php');
+    exit();
   }
   
   if(
@@ -20,7 +21,7 @@
 
   if (!hasPermission($user)){
     header("Location: ./index.php");
-    exit;
+    exit();
   }
   
   $username = $_SESSION['username'];
