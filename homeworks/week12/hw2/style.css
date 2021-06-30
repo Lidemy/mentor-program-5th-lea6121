@@ -24,7 +24,7 @@ header {
 }
 
 .container {
-  max-width: 680px;
+  max-width: 60%;
   margin: 0 auto;
   padding: 30px 30px;
 }
