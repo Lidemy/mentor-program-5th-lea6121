@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script>
+    let data = JSON.parse(localStorage.getItem('todoData')) || []
+
+    let todo = {}
+
+    function escape(output) {
+      return output
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+    }
+
+    function renderListData(data) {
+      for (let i = 0; i < data.length; i++) {
+        $('.todo-list').append(`
+          <li class="todo-item">
+            <div class="todo-check">
+              <input class="form-check-input" type="checkbox" data-index="${data[i].id
+                  }" id="${data[i].id}"><label class="form-check-label" for="${data[i].id
+                  }">${escape(data[i].content)}</label>
+            </div>
+
+            <div class='todo-editor'>
+              <input class="todo-edit-input" type="text" placeholder="${escape(
+                    data[i].content
+                  )}">
+              <button type="button" class="btn btn-outline-secondary" data-index="${data[i].id
+                  }">confirm</button>
+            </div>
+
+            <div class=todo-btn>
+              <button type="button" class="btn btn-outline-primary" data-index="${data[i].id
+                  }">edit</button>
+              <button type="button" class="btn btn-outline-dark" data-index="${data[i].id
+                  }">Delete</button>
+            </div>
+          </li>        
+        `)
+        }
+      }
+
+    function appendList() {
+      $('.todo-list').append(`
+        <li class="todo-item">
+          <div class="todo-check">
+            <input class="form-check-input" type="checkbox" data-index="${todo.id}"
+            id="${todo.id}"}><label class="form-check-label" for="${todo.id
+              }">${escape(todo.content)}</label>
+          </div>
+
+          <div class='todo-editor'>
+            <input class="todo-edit-input" type="text" placeholder="${escape(
+                todo.content
+              )}">
+            <button type="button" class="btn btn-outline-secondary" data-index="${todo.id
+              }">confirm</button>
+          </div>
+
+          <div class=todo-btn>
+            <button type="button" class="btn btn-outline-primary" data-index="${todo.id
+              }">edit</button>
+            <button type="button" class="btn btn-outline-dark" data-index="${todo.id
+              }">Delete</button>
+          </div>
+        </li>        
+      `)
+    }
+
+    $(document).ready(function () {
+      if (data !== []) {
+        renderListData(data)
+      }
+
+      // 新增 todo
+      $('.input-wrap').submit((e) => {
+        e.preventDefault()
+
+        const inputValue = $('.todo-input').val()
+
+        if (inputValue === '') {
+          alert('請輸入內容')
+        }
+
+        if (inputValue !== '') {
+          todo = {
+            id: Date.now(),
+            content: inputValue,
+            checked: false
+          }
+
+          data.push(todo)
+          localStorage.setItem('todoData', JSON.stringify(data))
+          appendList()
+          $('.todo-input').val('') // 清空 input 欄位
+        }
+      })
+
+      // 修改 todo
+      $('.todo-list').on('click', '.btn-outline-primary', (e) => {
+        $(e.target)
+          .parent()
+          .parent()
+          .children('.todo-editor')
+          .css('display', 'block')
+
+        const oldTodo = $(e.target)
+          .parent()
+          .parent()
+          .find('.form-check-label')
+          .text()
+
+        $('.todo-edit-input').val(oldTodo)
+      })
+
+      $('.todo-list').on('click', '.btn-outline-secondary', (e) => {
+        let newTodo = $(e.target)
+          .parent()
+          .parent()
+          .children('.todo-editor')
+          .children('.todo-edit-input')
+          .val()
+
+        $(e.target)
+          .parent()
+          .parent()
+          .children()
+          .children('.form-check-label')
+          .text(newTodo)
+
+        const id = $(e.target).attr('data-index')
+        const index = data.findIndex((data) => data.id == id)
+
+        data[index].content = newTodo
+
+        localStorage.setItem('todoData', JSON.stringify(data))
+
+        $('.btn-outline-secondary').off()
+        $(e.target)
+          .parent()
+          .parent()
+          .children('.todo-editor')
+          .css('display', 'none')
+      })
+
+      // 刪除 todo
+      $('.todo-list').on('click', '.btn-outline-dark', function (e) {
+        if (confirm('Are you sure you want to delete the selected item?')) {
+          $(e.target).parent().parent().remove()
+
+          let id = $(e.target).attr('data-index')
+
+          const index = data.findIndex((data) => data.id == id)
+
+          data.splice(index, 1)
+
+          localStorage.setItem('todoData', JSON.stringify(data))
+        }
+      })
+
+      // 刪除全部 todo
+      $('.btn-dark').click(function () {
+        if (confirm('Are you sure you want to delete all completed items?')) {
+          $('.todo-item').remove()
+          localStorage.removeItem('todoData')
+          data = []
+        }
+      })
+
+      // 已完成未完成
+      $('.todo-list').on('click', '.todo-check', function (e) {
+        const btn = $(e.target)
+        const todoItem = $(e.target).parent().parent()
+        const id = $(e.target).attr('data-index')
+        const index = data.findIndex((data) => data.id == id)
+
+        if ($(e.target).hasClass('completed')) {
+          $(e.target).removeClass('completed')
+          todoItem.removeClass('completed')
+
+          data[index].checked = false
+          localStorage.setItem('todoData', JSON.stringify(data))
+        } else {
+          $(e.target).addClass('completed')
+          todoItem.addClass('completed')
+          data[index].checked = true
+          localStorage.setItem('todoData', JSON.stringify(data))
+        }
+      })
+
+      // 篩選 todo
+
+      // all
+      $('.controller').on('click', '.btn-all', function () {
+        $('.todo-item').addClass('all').fadeIn()
+      })
+
+      // active
+      $('.controller').on('click', '.btn-active', function () {
+        $('.todo-item:not(.completed)').addClass('active').fadeIn()
+        $('.todo-item.completed').hide()
+      })
+
+      // completed
+      $('.controller').on('click', '.btn-completed', function () {
+        $('.todo-item:not(.completed)').hide()
+        $('.todo-item.completed').fadeIn()
+      })
+    })
+  </script>
+</head>
+
+<body>
+
+    <header></header>
+
+    <section class="todo">
+      <div class="container">
+        <div class="todo-top">
+          <h3>TODO</h3>
+          <div class="todo-top__theme theme-mode">
+            <svg class="dark" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+            <path fill="#FFF" fill-rule="evenodd"
+            d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z" /></svg>
+          </div>
+        </div>
+
+        <div class="todo-wrap">
+          <form class="input-wrap">
+            <input class="todo-input" type="text" placeholder="What do you want to get done today...">
+          </form>
+
+          <div class="todo-content">
+            <ul class="todo-list">
+              
+            </ul>
+
+            <div class="controller">
+              <div class="btn-group me-2" role="group" aria-label="First group">
+                <button type="button" class="btn btn-outline-secondary btn-all">all</button>
+                <button type="button" class="btn btn-outline-secondary btn-active">active</button>
+                <button type="button" class="btn btn-outline-secondary btn-completed">completed</button>
+              </div>
+
+              <button type="button" class="btn btn-dark">Clear All</button>
+            </div>
+          </div>
+        </div>
+    </section>  
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
