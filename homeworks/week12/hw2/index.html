@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,9 @@
   <link rel="stylesheet" href="./style.css">
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script>
+
+    const APIUrl = 'http://mentor-program.co/mtr04group6/lea6121/demo/w12/hw2/';
+
     let data = JSON.parse(localStorage.getItem('todoData')) || []
 
     let todo = {}
@@ -29,28 +33,28 @@
           <li class="todo-item">
             <div class="todo-check">
               <input class="form-check-input" type="checkbox" data-index="${data[i].id
-                  }" id="${data[i].id}"><label class="form-check-label" for="${data[i].id
-                  }">${escape(data[i].content)}</label>
+          }" id="${data[i].id}"><label class="form-check-label" for="${data[i].id
+          }">${escape(data[i].content)}</label>
             </div>
 
             <div class='todo-editor'>
               <input class="todo-edit-input" type="text" placeholder="${escape(
-                    data[i].content
-                  )}">
+            data[i].content
+          )}">
               <button type="button" class="btn btn-outline-secondary" data-index="${data[i].id
-                  }">confirm</button>
+          }">confirm</button>
             </div>
 
             <div class=todo-btn>
               <button type="button" class="btn btn-outline-primary" data-index="${data[i].id
-                  }">edit</button>
+          }">edit</button>
               <button type="button" class="btn btn-outline-dark" data-index="${data[i].id
-                  }">Delete</button>
+          }">Delete</button>
             </div>
           </li>        
         `)
-        }
       }
+    }
 
     function appendList() {
       $('.todo-list').append(`
@@ -58,22 +62,22 @@
           <div class="todo-check">
             <input class="form-check-input" type="checkbox" data-index="${todo.id}"
             id="${todo.id}"}><label class="form-check-label" for="${todo.id
-              }">${escape(todo.content)}</label>
+        }">${escape(todo.content)}</label>
           </div>
 
           <div class='todo-editor'>
             <input class="todo-edit-input" type="text" placeholder="${escape(
-                todo.content
-              )}">
+          todo.content
+        )}">
             <button type="button" class="btn btn-outline-secondary" data-index="${todo.id
-              }">confirm</button>
+        }">confirm</button>
           </div>
 
           <div class=todo-btn>
             <button type="button" class="btn btn-outline-primary" data-index="${todo.id
-              }">edit</button>
+        }">edit</button>
             <button type="button" class="btn btn-outline-dark" data-index="${todo.id
-              }">Delete</button>
+        }">Delete</button>
           </div>
         </li>        
       `)
@@ -171,7 +175,7 @@
       })
 
       // 刪除全部 todo
-      $('.btn-dark').click(function () {
+      $('.delete-all').click(function () {
         if (confirm('Are you sure you want to delete all completed items?')) {
           $('.todo-item').remove()
           localStorage.removeItem('todoData')
@@ -219,47 +223,107 @@
         $('.todo-item.completed').fadeIn()
       })
     })
+
+    // 儲存 todo
+    $(document).on('click', '.save', () => {
+      let getUrlString = location.href;
+      let url = new URL(getUrlString);
+      let userID
+
+      if (url.searchParams.get('userID')) {
+        userID = url.searchParams.get('userID')
+      } else {
+        userID = Date.now()
+      }
+
+      let data = JSON.parse(localStorage.getItem('todoData'))
+
+      const todos = JSON.stringify(data);
+      
+      const todoData =
+      {
+        userID: userID,
+        todos: todos
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: `${APIUrl}/api_add_todos.php`,
+        data: todoData,
+      })
+        .done((data) => {
+          if (confirm(`您的 userID 是 ${userID}。在網址後方加上 ?userID={您的 userID} 即可訪問個人 Todo`)) {
+            document.location.href = `${APIUrl}?userID=${userID}`;
+          }
+        })
+        .fail(err => console.log(err));
+    });
+
+    // read todo by userID
+
+    if (new URL(location.href).searchParams.get('userID')) {
+      userID = new URL(location.href).searchParams.get('userID')
+
+      $.ajax({
+        type: 'GET',
+        url: `${APIUrl}/api_todos.php?userID=${userID}`,
+      })
+        .done((data) => {
+          const getTodosFromDB = JSON.parse(data.todos[0].todos);
+          getTodosFromDB.forEach((storedTodo) => {
+            renderListData(storedTodo)
+          });
+        })
+        .fail(err => console.log(err));
+    }
+
+
   </script>
 </head>
 
 <body>
 
-    <header></header>
+  <header></header>
 
-    <section class="todo">
-      <div class="container">
-        <div class="todo-top">
-          <h3>TODO</h3>
-          <div class="todo-top__theme theme-mode">
-            <svg class="dark" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
+  <section class="todo">
+    <div class="container">
+      <div class="todo-top">
+        <h3>TODO</h3>
+        <div class="todo-top__theme theme-mode">
+          <svg class="dark" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
             <path fill="#FFF" fill-rule="evenodd"
-            d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z" /></svg>
-          </div>
+              d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z" />
+          </svg>
         </div>
+      </div>
 
-        <div class="todo-wrap">
-          <form class="input-wrap">
-            <input class="todo-input" type="text" placeholder="What do you want to get done today...">
-          </form>
+      <div class="todo-wrap">
+        <form class="input-wrap">
+          <input class="todo-input" type="text" placeholder="What do you want to get done today...">
+        </form>
 
-          <div class="todo-content">
-            <ul class="todo-list">
-              
-            </ul>
+        <div class="todo-content">
+          <ul class="todo-list">
 
-            <div class="controller">
-              <div class="btn-group me-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-outline-secondary btn-all">all</button>
-                <button type="button" class="btn btn-outline-secondary btn-active">active</button>
-                <button type="button" class="btn btn-outline-secondary btn-completed">completed</button>
-              </div>
+          </ul>
 
-              <button type="button" class="btn btn-dark">Clear All</button>
+          <div class="controller">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <button type="button" class="btn btn-outline-secondary btn-all">all</button>
+              <button type="button" class="btn btn-outline-secondary btn-active">active</button>
+              <button type="button" class="btn btn-outline-secondary btn-completed">completed</button>
+            </div>
+
+            <div>
+              <button type="button" class="btn btn-dark delete-all">Clear All</button>
+              <button type="button" class="btn btn-dark save">Save</button>
             </div>
           </div>
         </div>
-    </section>  
+      </div>
+  </section>
   </div>
 
 </body>
+
 </html>
