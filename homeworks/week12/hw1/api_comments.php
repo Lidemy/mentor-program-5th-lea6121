@@ -26,10 +26,8 @@
     $stmt->bind_param('s', $site_key);
   }
 
-   // 準備使用 SQL query
   $result = $stmt->execute();
 
-  // 如果沒有拿到 result 的話就吐出錯誤資訊
   if(!$result){
     $json = array(
       "ok" => false,
