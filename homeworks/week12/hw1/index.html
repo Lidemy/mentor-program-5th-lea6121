@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>Board</title>
+
+  <style>
+    .container {
+      margin-top: 12px;
+    }
+
+    label {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .comment {
+      margin-bottom: 12px;
+    }
+    .card {
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+    .btn-secondary {
+      margin-bottom: 8px;
+    }
+  </style>
+  <script>
+    let before = 0
+      let url = `http://mentor-program.co/mtr04group6/lea6121/demo/w12/hw1/api_comments.php?site_key=lee`
+
+      function escape(output) {
+        return output
+          .replace(/\&/g, '&amp;')
+          .replace(/\</g, '&lt;')
+          .replace(/\>/g, '&gt;')
+          .replace(/\"/g, '&quot;')
+          .replace(/\'/g, '&#x27')
+          .replace(/\//g, '&#x2F')
+      }
+
+      function appendComment(container, comment, isPrepend) {
+        const html = `
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${comment.id} ${escape(comment.nickname)}</h5>
+          <p class="card-text">${escape(comment.content)}</p>
+        </div>
+      </div>`
+
+        if (isPrepend) {
+          container.prepend(html)
+        } else {
+          container.append(html)
+        }
+      }
+
+      function getCommentsAPI(beforeDefault, cb) {
+        if (beforeDefault) {
+          url += `&before=${before}`
+        }
+        $.ajax({ url })
+          .done((data) => cb(data))
+          .fail((err) => console.log(err))
+      }
+
+      function getComments() {
+        getCommentsAPI(before, (data) => {
+          if (!data.ok) {
+            console.log(data.message)
+            return
+          }
+          const comments = data.discussions
+          const loadBtn = '<button class="btn btn-secondary">載入更多</button>'
+
+          if (comments.length < 6) {
+            for (let i = 0; i < comments.length; i += 1) {
+              appendComment($('.comments'), comments[i])
+            }
+            $('.btn-secondary').hide()
+          } else {
+            for (let i = 0; i < comments.length - 1; i += 1) {
+              appendComment($('.comments'), comments[i])
+            }
+            $('.comments').append(loadBtn)
+
+            before = comments[comments.length - 2].id
+          }
+        })
+      }
+
+      $(document).ready(() => {
+        getComments()
+
+        $('.comments').on('click', '.btn-secondary', function () {
+          $('.btn-secondary').hide()
+
+          getComments()
+        })
+
+        $('.add-comment-form').submit((e) => {
+          e.preventDefault()
+          const newComment = {
+            site_key: 'lee',
+            nickname: $('input[name=nickname]').val(),
+            content: $('textarea[name=content]').val()
+          }
+
+          $.ajax({
+            type: 'POST',
+            url: 'http://mentor-program.co/mtr04group6/lea6121/demo/w12/hw1/api_add_comments.php',
+            data: newComment
+          }).done(function (data) {
+            if (!data.ok) {
+              alert(data.message)
+              return
+            }
+            $('input[name=nickname]').val('')
+            $('textarea[name=content]').val('')
+            appendComment($('.comments'), newComment, true)
+          })
+        })
+      })
+
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <form class="add-comment-form">
+
+      <div class="mb-3">
+        <label for="form-nickname">暱稱</label>
+        <input name="nickname" type="text" class="form-control" id="form-nickname">
+      </div>
+     
+      <div class="comment">
+        <label for="content-textarea">Comments</label>
+        <textarea class="form-control" placeholder="Leave a comment here" id="content-textarea" name="content"
+            style="height: 100px"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      
+    </form>
+
+    <div class="comments">
+</div>
+
+  </div>
+  <script src="./script.js"></script>
+</body>
+
+</html>
