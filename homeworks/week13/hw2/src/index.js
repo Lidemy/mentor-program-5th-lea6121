@@ -58,7 +58,6 @@ export function init(options) {
   })
 
   function getComments() {
-    // const commentDOM = $(commentsSelector)
     getCommentsAPI(apiUrl, siteKey, before, (data) => {
       if (!data.ok) {
         console.log(data.message)
@@ -77,7 +76,6 @@ export function init(options) {
         }
         const loadMoreBtn = getLoadMoreBtn(loadMoreClassName)
         $(commentsSelector).append(loadMoreBtn)
-
         before = comments[comments.length - 2].id
       }
     })

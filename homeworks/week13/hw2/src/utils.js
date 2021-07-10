@@ -11,14 +11,12 @@ export function escape(output) {
 
 export function appendComment(container, comment, isPrepend) {
   const html = `
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">${comment.id} ${escape(
-    comment.nickname
-  )}</h5>
-            <p class="card-text">${escape(comment.content)}</p>
-          </div>
-        </div>`
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">${comment.id} ${escape(comment.nickname)}</h5>
+        <p class="card-text">${escape(comment.content)}</p>
+      </div>
+    </div>`
 
   if (isPrepend) {
     container.prepend(html)
