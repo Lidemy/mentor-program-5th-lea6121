@@ -1,0 +1,220 @@
+body {
+  font-family: Luminari, fantasy;
+  background-image: url('http://lol-stats.net/uploads/X0geMjIXBEZOVO5U7CvrqJW3shfN1NaI57cmgyxZ.jpeg');
+  background-size: 100%;
+  background-repeat: repeat-y;
+}
+
+/* nav-bar */
+
+section {
+  width: 100vw;
+  height: 78px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  background-color: white;
+  justify-content: space-between;
+  z-index: 2;
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+}
+
+#site-name {
+  font-size: 30px;
+}
+
+.tags {
+  display: flex;
+}
+
+.tag {
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  color: #010101;
+  display: flex;
+  transition: all 0.2s ease-in;
+  border-radius: 10px;
+}
+
+.tag:hover {
+  background: black;
+  color: white;
+}
+
+/* main */
+
+main {
+  width: 100vw;
+  text-align: center;
+}
+
+main h1 {
+  padding: 160px 0 10px 0;
+  font-size: 59px;
+  background: linear-gradient(to bottom, #0303ee, #fd0303, #5f23ad);
+  background: -webkit-linear-gradient(to top, #3a1c71, #d76d77, #ffaf7b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+main h2 {
+  background: linear-gradient(to bottom, #ffaf7b, #1630c7, #3d90c7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  padding-top: 10px;
+  font-size: 30px;
+}
+
+.contents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 28px 20px;
+  max-width: 1160px;
+  padding: 70px 10px;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: rgb(255, 255, 255, 0.4);
+  color: black;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+.content__pic {
+  width: 100%;
+  border-radius: 10px;
+}
+
+figcaption {
+  display: flex;
+}
+
+.content__headshot {
+  margin: 8px;
+}
+
+.content__headshot img {
+  width: 70px;
+  border-radius: 50px;
+}
+
+.content__title {
+  width: 250px;
+}
+
+.content__title > p {
+  font-family: cursive;
+  font-size: 19px;
+  font-weight: 900;
+  padding-top: 4px;
+  text-align: left;
+  line-height: 1.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.content__title p:nth-child(2) {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.content__title p:nth-child(3) {
+  font-size: 15px;
+  color: rgb(68, 67, 67);
+}
+
+.content:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: scale(1.1);
+  color: white;
+}
+
+/* media queries */
+@media only screen and (max-width: 1200px) {
+  section {
+    height: 60px;
+    justify-content: center;
+  }
+
+  #site-name {
+    font-size: 28px;
+  }
+
+  .tags {
+    position: fixed;
+    width: 100vw;
+    top: 59px;
+    background: black;
+    height: 78px;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .tag {
+    color: white;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .tag:hover {
+    background: white;
+    color: black;
+    border-radius: 3px;
+  }
+
+  main h1 {
+    padding-top: 200px;
+    margin-bottom: 30px;
+  }
+
+  main h2 {
+    font-size: 24px;
+  }
+  .contents {
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+  }
+
+  .content {
+    background-color: rgb(255, 255, 255, 0.4);
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+  .content:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    background-size: cover;
+  }
+
+  .contents {
+    display: block;
+    padding: 40px 30px;
+  }
+
+  figure {
+    background-color: rgb(255, 255, 255, 0.4);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+
+  figure:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.05);
+  }
+
+  .content__title {
+    width: 180px;
+  }
+}
