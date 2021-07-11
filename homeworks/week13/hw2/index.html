@@ -19,12 +19,20 @@
           containerSelector: '.comment-area'
         })
       })
+    $(document).ready(() => {
+        commentPlugin.init({
+          siteKey: 'lee555',
+          apiUrl: 'http://mentor-program.co/mtr04group6/lea6121/demo/w13/hw2',
+          containerSelector: '.comment-area-1'
+        })
+      })  
   </script>
 </head>
 
 <body>
   <div class="container">
     <div class="comment-area"></div>
+    <div class="comment-area-1"></div>
   </div>
 
 </body>

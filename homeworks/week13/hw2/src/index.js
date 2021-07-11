@@ -25,9 +25,9 @@ export function init(options) {
   formClassName = `${siteKey}-add-comment-form`
   formSelector = `.${formClassName}`
   commentsSelector = `.${commentsClassName}`
-
   containerElement = $(options.containerSelector)
   containerElement.append(getForm(formClassName, commentsClassName))
+  commentDOM = $(commentsSelector)
 
   getComments()
 
