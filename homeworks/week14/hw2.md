@@ -193,6 +193,8 @@
 
      在 Gandi 購買後在左側選域名的 tag，點選區域檔紀錄。將類型 A 的值改為 AWS IPv4 位址。網域設定完成（需要等一段時間才會看到網站）
 
+     設定好網域後的 blog 連結：**_[blog](http://atms.website/blog/)_**
+
 ### Reference
 
 [[紀錄] 部屬 AWS EC2 雲端主機 + LAMP Server + phpMyAdmin](https://mtr04-note.coderbridge.io/2020/09/15/-%E7%B4%80%E9%8C%84-%08-%E9%83%A8%E5%B1%AC-aws-ec2-%E9%9B%B2%E7%AB%AF%E4%B8%BB%E6%A9%9F-/)
