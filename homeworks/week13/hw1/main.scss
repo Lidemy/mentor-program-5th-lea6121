@@ -1,0 +1,256 @@
+@import '_variables.scss';
+@import '_mixins.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+
+.navbar {
+  height: 80px;
+
+  &__site-name {
+    font-size: 28px;
+    font-weight: bold;
+
+    & a {
+    text-decoration: none;
+    color: $gray20;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: space-between;
+
+    & > div {
+      display: flex;
+    }
+    & li {
+      margin-left: 21px;
+    }
+
+    & a {
+      text-decoration: none;
+      color: $gray;
+      font-size: 16px;
+    }
+  }
+  &__wrapper {
+    @include flex-center;
+    height: 100%;
+  }
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0px 12px;
+}
+
+.banner {
+  background-image: linear-gradient(to top, $black, $arsenic);
+  height: 240px;
+  color: $whisper;
+  @include flex-center;
+  align-items: center;
+  flex-direction: column;
+
+  &__wrapper > div {
+    margin-top: 26px;
+  } 
+
+  & h1 {
+    font-size: 28px;
+    margin: 0;
+  }
+}
+
+%template {
+  background: $white;
+  padding: 6px;
+  display: inline-flex;
+  margin: 0 auto;
+  margin-top: -30px;
+  flex-direction: column;
+}
+
+.container {
+  @extend %template;
+
+  &-wrapper {
+    @include flex-center;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 138px;
+    min-height: calc(100vh - 350px);
+  }
+}
+
+.posts {
+  @extend %template;
+}
+
+.post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $nobel;
+
+  & + .post {
+    margin-top: 24px;
+  }
+
+  &__header {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__action {
+    padding: 3px 12px;
+    border: solid 1px $darkGray;
+    color: $darkGray;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  &__info {
+    margin-top: 19px;
+    padding: 12px 22px;
+    background: $whisper;
+  }
+  &__content {
+    margin-top: 17px;
+    white-space: pre-line;
+    line-height: 1.5em;
+  }
+}
+
+.btn-read-more {
+  display: inline-block;
+  padding: 12px 16px;
+  border: solid 1px $dimGray;
+  color: $dimGray;
+  margin-top: 36px;
+  text-decoration: none;
+}
+
+.login-wrapper {
+  margin: 0 auto;
+  border: solid 1px $black;
+  width: 527px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 62px 72px;
+  margin-top: -30px;
+  background: $white;
+
+  form {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  input[type=submit] {
+      height: 56px;
+      background-image: linear-gradient(to top, $black, $arsenic);
+      color: $white;
+      margin-top: 73px;
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: normal;
+    }
+}
+
+.input {
+    &__field {
+    margin-top: 16px;
+    height: 40px;
+  }
+  &__wrapper + .input__wrapper {
+    margin-top: 23px;
+  }
+  &__label {
+    font-size: 14px;
+    margin-left: 21px;
+  }
+}
+
+.edit-post {
+  width: 900px;
+  padding: 30px;
+  border: solid 1px $nobel;
+
+  &__title {
+    font-size: 20px;
+  }
+  &__input-wrapper {
+    width: 100%;
+    margin-top: 28px;
+    input, textarea {
+      width: 100%;
+      padding: 6px;
+    }
+  }
+  &__btn-wrapper {
+    text-align: right;
+  }
+  &__btn {
+    display: inline-block;
+    padding: 10px 39px;
+    border: solid 1px $dimGray;
+    color: $dimGray;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+}
+
+.admin-post {
+  padding: 24px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $nobel;
+  font-size: 14px;
+  width: 920px;
+  &__title {
+    font-size: 16px;
+    margin-left: 16px;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+  }
+  &__created-at {
+    color: $suvaGray;
+  }
+  &__btn {
+    padding: 4px 8px;
+    border: 1px solid $darkGray;
+    color: $darkGray;
+    cursor: pointer;
+    margin-left: 8px;
+    text-decoration: none;
+
+    &:last-child {
+      margin-right: 16px;
+    }
+  }
+}
+
+footer {
+  padding: 10px 0px;
+  background-color: $nightRider;
+  font-size: 14px;
+  color: $white;
+  text-align: center;
+}
