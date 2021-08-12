@@ -1,0 +1,139 @@
+#root {
+  font-family: MicrosoftJhengHei;
+  background: rgb(223, 223, 223);
+}
+
+.wrapper {
+  min-height: 100vh;
+  background: white;
+  width: 980px;
+  margin: 30px auto;
+}
+
+main {
+  border-top: 10px solid #fad312;
+  padding-bottom: 50px;
+}
+
+main > h1 {
+  margin-left: 42px;
+  margin-top: 54px;
+  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: normal;
+  color: #000000;
+}
+
+.event-info {
+  margin-left: 40px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  line-height: 25px;
+  color: #000000;
+}
+
+#notice {
+  margin-left: 41px;
+  margin-bottom: 40px;
+  color: #e74149;
+}
+
+.form {
+  margin-left: 41px;
+}
+
+.question > span,
+.radio > span {
+  color: #e74149;
+  font-size: 15px;
+  color: red;
+  font-weight: 400;
+}
+
+.radio {
+  font-size: 15px;
+}
+
+.question {
+  font-size: 20px;
+  line-height: 35px;
+  color: #000000;
+  margin-bottom: 18px;
+}
+
+.answer {
+  font-size: 16px;
+  color: #afafaf;
+  width: 287px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.submit {
+  padding: 13px 31px 13px 32px;
+  border-radius: 3px;
+  background-color: #fad312;
+  margin-bottom: 25px;
+  border: none;
+  font-size: 15px;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
+
+.App > footer {
+  background-color: black;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 5px solid #fad312;
+}
+
+.rights {
+  text-align: center;
+  color: #999999;
+}
+
+@media only screen and (max-width: 1024px) {
+  .wrapper {
+    background: black;
+    width: 95%;
+  }
+
+  main > h1,
+  .question {
+    color: white;
+  }
+
+  .event-info {
+    font-size: 18px;
+    color: white;
+  }
+
+  input {
+    height: 24px;
+    border: 1px solid rgb(27, 11, 117);
+    border-radius: 6px;
+  }
+
+  .radio {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 23px;
+  }
+
+  p {
+    font-size: 15px;
+    color: white;
+  }
+
+  .submit {
+    height: 50px;
+  }
+}
