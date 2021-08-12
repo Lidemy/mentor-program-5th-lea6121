@@ -20,6 +20,8 @@ function Board() {
 
   const handleClick = (y, x) => {
     const newBoard = JSON.parse(JSON.stringify(board))
+    const positionX = x
+    const positionY = y
 
     if (
       calculateWinner(
@@ -32,16 +34,12 @@ function Board() {
     ) {
       return
     }
+
     newBoard[y][x] = whiteIsNext ? '⚫' : '⚪'
-
-    const positionX = x
-    const positionY = y
-
     setPosition({
       x: positionX,
       y: positionY
     })
-
     setBoard(newBoard)
     setWhiteIsNext(!whiteIsNext)
   }
@@ -81,7 +79,7 @@ function Board() {
           value="reload"
           onClick={() => window.location.reload()}
         >
-          restart
+          Restart
         </button>
       </div>
     </div>
