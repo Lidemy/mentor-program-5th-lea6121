@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import Game from './Game'
 
 ReactDOM.render(<Game />, document.getElementById('root'))
@@ -46,24 +45,22 @@ export function calculateWinner(y, x, arr, chessColor) {
 
   //左上右下
   // 左上
-  for (let i = x - 1, j = y - 1; i && j >= 0; i--, j--) {
+  for (let i = x - 1, j = y - 1; i >= 0 || j >= 0; i--, j--) {
     if (i < 0 || j < 0 || arr[j][i] !== chessColor) {
       break
     }
     n3++
   }
-
   // 右下
-  for (let i = x + 1, j = y + 1; i && j < 19; i++, j++) {
+  for (let i = x + 1, j = y + 1; i < 19 || j < 19; i++, j++) {
     if (i >= 19 || j >= 19 || arr[j][i] !== chessColor) {
       break
     }
     n3++
   }
-
   // 右上左下
   // 右上
-  for (let i = x, j = y; i >= 0 && j < 19; i--, j++) {
+  for (let i = x - 1, j = y + 1; i >= 0 || j < 19; i--, j++) {
     if (i < 0 || j >= 19 || arr[j][i] !== chessColor) {
       break
     }
@@ -71,14 +68,14 @@ export function calculateWinner(y, x, arr, chessColor) {
   }
 
   // 左下
-  for (let i = x, j = y; i < 19 && j >= 0; i++, j--) {
+  for (let i = x + 1, j = y - 1; i < 19 || j >= 0; i++, j--) {
     if (i >= 19 || j < 0 || arr[j][i] !== chessColor) {
       break
     }
     n4++
   }
 
-  if (n1 >= 4 || n2 >= 4 || n3 >= 4 || n4 >= 6) {
+  if (n1 >= 4 || n2 >= 4 || n3 >= 4 || n4 >= 4) {
     return chessColor
   }
   return null
