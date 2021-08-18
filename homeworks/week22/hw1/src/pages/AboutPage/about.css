@@ -1,4 +1,4 @@
-.profile {
+.about-profile {
   width: 80%;
   margin: 0px auto;
   padding: 50px 20px 30px 40px;
@@ -8,7 +8,7 @@
   max-width: 100vw;
 }
 
-.profile_pic {
+.about-profile__pic {
   border-left: 1px solid black;
   height: 1000px;
   width: auto;
@@ -19,7 +19,7 @@
   background-attachment: fixed;
 }
 
-.profile_info {
+.about-profile__info {
   margin: auto;
   padding-right: 30px;
   align-items: center;

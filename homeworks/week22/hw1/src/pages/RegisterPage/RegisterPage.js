@@ -44,7 +44,7 @@ export default function RegisterPage() {
           setAuthToken(null)
           return setErrors(response.toString())
         }
-        alert('註冊成功。')
+        alert('註冊成功！')
         setUser(response.data)
         history.push('/')
       })
@@ -58,7 +58,7 @@ export default function RegisterPage() {
       {isLoadingMsg && <Loading>Loading...</Loading>}
       <div className="register-container">
         <form onSubmit={handleSubmit}>
-          <div className="login-form">
+          <div className="register-form">
             NICKNAME
             <br />
             <input
@@ -68,6 +68,7 @@ export default function RegisterPage() {
               placeholder="您的暱稱"
               value={nickname}
               onChange={(e) => updateFormData(e)}
+              required
             />
             <br />
           </div>
@@ -81,6 +82,7 @@ export default function RegisterPage() {
               placeholder="您的使用者名稱"
               value={username}
               onChange={(e) => updateFormData(e)}
+              required
             />
             <br />
           </div>
@@ -94,6 +96,7 @@ export default function RegisterPage() {
               placeholder="您的密碼"
               value={password}
               onChange={(e) => updateFormData(e)}
+              required
             />
             <br />
             <span>{errors}</span>

@@ -3,11 +3,13 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { ResetStyle, GlobalStyle } from '../../globalStyle'
 import { getPosts } from '../../WebAPI'
+import { Loading } from '../../components/App/App'
 
 const Root = styled.div`
   width: 80%;
   margin: 0 auto;
   padding-top: 100px;
+  position: relative;
 `
 
 const PostsContainer = styled.div`
@@ -93,10 +95,16 @@ export default function HomePage() {
   const [posts, setPosts] = useState([])
   const [pages, setPages] = useState(0)
   const [currentPage, setCurrentPage] = useState(0)
+  const [isLoadingMsg, setIsLoadingMsg] = useState(false)
 
   useEffect(() => {
+    if (isLoadingMsg) {
+      return
+    }
+    setIsLoadingMsg(true)
     getPosts()
       .then((data) => {
+        setIsLoadingMsg(false)
         setPages(data.totalPosts)
         setCurrentPage(1)
         return data.posts
@@ -123,22 +131,22 @@ export default function HomePage() {
   }
 
   function RenderPagination() {
-    const totalPage = Math.ceil(totalPageNum / 5)
-    let pageBtn = []
-    for (let i = 1; i <= totalPage; i++) {
-      pageBtn.push(i)
+    const totalPages = Math.ceil(totalPageNum / 5)
+    let pageNumbers = []
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i)
     }
     return (
       <div>
         <PaginationContainer>
-          {pageBtn.map((value, index) => (
+          {pageNumbers.map((value, index) => (
             <Pagination key={value} onClick={changePage}>
               {value}
             </Pagination>
           ))}
         </PaginationContainer>
         <PageTeller>
-          第 {currentPage} 頁 / 共 {totalPage} 頁
+          第 {currentPage} 頁 / 共 {totalPages} 頁
         </PageTeller>
       </div>
     )
@@ -148,6 +156,7 @@ export default function HomePage() {
     <div>
       <ResetStyle />
       <GlobalStyle />
+      {isLoadingMsg && <Loading>Loading...</Loading>}
       <Root>
         {posts.map((post) => (
           <Post key={post.id} post={post} />

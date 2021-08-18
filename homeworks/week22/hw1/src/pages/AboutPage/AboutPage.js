@@ -7,8 +7,8 @@ export default function AboutPage() {
       <ResetStyle />
       <GlobalStyle />
       <div className="about-container">
-        <div class="profile">
-          <div class="profile_info">
+        <div className="about-profile">
+          <div className="about-profile__info">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ipsum
             velit, pharetra sit amet hendrerit quis, ultricies non purus. Ut
             consequat varius eros, sit amet posuere erat sodales eu. Phasellus
@@ -23,7 +23,7 @@ export default function AboutPage() {
             nisl. Praesent a aliquet urna, a ultrices sem. Sed in consectetur
             augue.
           </div>
-          <div class="profile_pic"></div>
+          <div className="about-profile__pic"></div>
         </div>
       </div>
     </div>

@@ -42,7 +42,7 @@ export default function LoginPage() {
           setAuthToken(null)
           return setErrors(response.toString())
         }
-        alert('登入成功。')
+        alert('登入成功！')
         setUser(response.data)
         history.push('/')
       })
@@ -65,6 +65,7 @@ export default function LoginPage() {
               name="username"
               value={username}
               onChange={(e) => updateFormData(e)}
+              required
             />
             <br />
           </div>
@@ -77,6 +78,7 @@ export default function LoginPage() {
               name="password"
               value={password}
               onChange={(e) => updateFormData(e)}
+              required
             />
             <br />
             <span>{errors}</span>
